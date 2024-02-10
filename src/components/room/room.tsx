@@ -56,8 +56,8 @@ export default function Room() {
       newSocket.onopen = () => {
         console.log("チャット開始");
         const dataToSend = {
-          message: "プログラミング頑張ります",
-          userName: "userName",
+          message: message,
+          userName: userName,
           action: "join"
         };
         newSocket.send(JSON.stringify(dataToSend));
