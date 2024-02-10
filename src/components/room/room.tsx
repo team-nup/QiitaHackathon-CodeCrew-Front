@@ -71,6 +71,8 @@ export default function Room() {
       };
 
     }
+
+    screenSwitching();
   };
 
   const sendMessage = () => {
@@ -105,10 +107,9 @@ export default function Room() {
       <>
         {isInputInfo ? (
           <div id='beforeInputInfo'>
-            <button onClick={joinRoom}>参加</button>
             <input type="text" placeholder='ユーザ名' value={userName} onChange={(e) => setUserName(e.target.value)} />
             <input type="text" placeholder='目標' value={message} onChange={(e) => setMessage(e.target.value)} />
-            <button onClick={ screenSwitching }>送信</button>
+            <button onClick={ joinRoom }>ルームに参加</button>
           </div>
         ):(
           <div className='InputedInfoScreen'>
