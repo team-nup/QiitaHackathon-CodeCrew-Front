@@ -56,6 +56,13 @@
   right: 0; /* activeクラスが追加されたときに右から画面内に移動 */
 }
 
+.geminiContaienr {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .inputTextContainer {
   display: flex;
   flex-direction: row;

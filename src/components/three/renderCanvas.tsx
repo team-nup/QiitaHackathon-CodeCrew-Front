@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
 import createParticles from './createParticles';
-import createUserParticles from './createUserParticles';
+// import createUserParticles from './createUserParticles';
 import createText from './createText';
 
 // シーンの作成
