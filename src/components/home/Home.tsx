@@ -3,16 +3,16 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import {useNavigate } from 'react-router-dom'
 
+import Header from '../header/header';
 
 export default function Home() {
-
-  
   const navigate = useNavigate();
 
-
     return (
+      <>
+      <Header></Header>
       <main className="main">
-        <div>Home</div>
+        <h1>Home</h1>
         <Button 
           variant="outlined"
           size="large"
@@ -21,5 +21,6 @@ export default function Home() {
             はじめる
         </Button>
       </main>
+      </>
     )
   }
