@@ -1,5 +1,8 @@
+import { useNavigate } from 'react-router';
 import Three from '../three/three';
 import { useEffect, useState } from 'react';
+import RoomPageHeader from '../header/roomPageHeader';
+import './room.css'
 
 export default function Room() {
   const navigate = useNavigate();
@@ -61,16 +64,12 @@ export default function Room() {
   }
   
     return (
+      <>
+      <RoomPageHeader />
       <main className="main">
         <h1>Room</h1>
         <Three userName={userName} chatMessages={chatMessages} />
-        <Button
-            variant="outlined"
-            size="large"
-            endIcon={<ArrowForwardIcon />}
-            onClick={() => { navigate('/')}}>
-            ホームに戻る
-        </Button>
+
         <button onClick={joinRoom}>参加</button>
         <input type="text" placeholder='userName' value={userName} onChange={(e) => setUserName(e.target.value)} />
         <input type="text" placeholder='message' value={message} onChange={(e) => setMessage(e.target.value)} />
@@ -82,5 +81,6 @@ export default function Room() {
           ))}
         </div>
       </main>
+      </>
     )
 }
