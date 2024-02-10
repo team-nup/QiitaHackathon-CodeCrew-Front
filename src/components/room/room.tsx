@@ -131,6 +131,7 @@ export default function Room() {
               label="input message" 
               variant="filled" 
               color="primary"
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onChange={(e:any) => setInputText(e.target.value)}/>
             <div className='isClicledChatBtn'>
               <IconButton 

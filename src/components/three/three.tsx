@@ -15,6 +15,8 @@ interface ChildProps {
 export default function Three(props:ChildProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  console.log(props);
+
   useEffect(() => {
     // シーンの作成
     const { scene, camera, renderer } = createScene(canvasRef);
