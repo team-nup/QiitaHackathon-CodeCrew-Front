@@ -85,6 +85,7 @@ export default function Room() {
 
       newSocket.onmessage = (event) => {
         const message = event.data;
+        console.log(message);
         const paseMessage : ChatData =JSON.parse(message); 
         setChatMessage(paseMessage);
       };
