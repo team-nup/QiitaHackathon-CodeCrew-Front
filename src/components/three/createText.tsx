@@ -28,7 +28,6 @@ export default function createText(scene: THREE.Scene, text3d: String, position:
     text.position.copy(position); 
     scene.add(text)
 
-    return text;
     })
 }
 
