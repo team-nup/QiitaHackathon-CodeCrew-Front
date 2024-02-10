@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 
 import RoomPageHeader from '../header/roomPageHeader';
-
 import './room.css'
 
 export default function Room() {
@@ -14,6 +13,10 @@ export default function Room() {
   const [popupActive, setPopupActive] = useState(false);
   const [isclicedAIhelpBtn, setIsclicedAIhelpBtn] = useState('AIに相談する');
   const [inputText, setInputText] = useState('');
+  const [socket, setSocket] = useState<WebSocket>();
+  const [message, setMessage] = useState<string>('');//送る
+  const [userName, setUserName] = useState<string>('');
+  const [chatMessages, setChatMessages] = useState<string[]>([]);//受け取り
 
   const callGemini = async () => {
     // setisClickedBtn(true);
@@ -34,13 +37,64 @@ export default function Room() {
       setIsclicedAIhelpBtn('チャットを閉じる');
     }
   };
+
+  const joinRoom = () => {
+    const roomNum: string= "1" ;
+    if (roomNum) {
+      const wsUrl = `ws://localhost:8000/public/${roomNum}`;
+      const newSocket = new WebSocket(wsUrl);
+      setSocket(newSocket);
+
+      newSocket.onopen = () => {
+        console.log("チャット開始");
+        const dataToSend = {
+          message: "プログラミング頑張ります",
+          userName: "userName",
+          action: "join"
+        };
+        newSocket.send(JSON.stringify(dataToSend));
+      };
+
+      newSocket.onmessage = (event) => {
+        const message = event.data;
+        setChatMessages(prevMessages => [...prevMessages, message]);
+      };
+
+    }
+  };
+
+  const sendMessage = () => {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      const dataToSend = {
+        message: message,
+        userName: userName,
+        action: "message"
+      };
+      socket.send(JSON.stringify(dataToSend));
+      setMessage('');
+    }
+  };
+
+  const leaveRoom = () => {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      const dataToSend = {
+        message: "",
+        userName: userName,
+        action: "leave"
+      };
+      socket.send(JSON.stringify(dataToSend));
+      console.log("close")
+      //socket.close(1000,"");
+      window.location.href = '/';
+    }
+  }
   
     return (
       <>
         <RoomPageHeader />
         <main className="main">
           <div className='threeContainer'>
-            <Three />
+            <Three userName={userName} chatMessages={chatMessages} />
             <div className='AI'>
                 <div className='chatAIBtn'>
                   <h3>{isclicedAIhelpBtn}</h3>
@@ -56,6 +110,18 @@ export default function Room() {
                 </div>
             </div>
           </div>
+          {/* 消す */}
+          <button onClick={joinRoom}>参加</button>
+        <input type="text" placeholder='userName' value={userName} onChange={(e) => setUserName(e.target.value)} />
+        <input type="text" placeholder='message' value={message} onChange={(e) => setMessage(e.target.value)} />
+        <button onClick={sendMessage}>送信</button>
+        <button onClick={leaveRoom}>退出</button>
+        <div>
+          {chatMessages.map((msg, index) => (
+            <p key={index}>{msg}</p>
+          ))}
+        </div>
+        {/*  */}
         </main>
         <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
           <h3>AIと相談</h3>
@@ -65,7 +131,7 @@ export default function Room() {
               label="input message" 
               variant="filled" 
               color="primary"
-              onChange={(e) => setInputText(e.target.value)}/>
+              onChange={(e:any) => setInputText(e.target.value)}/>
             <div className='isClicledChatBtn'>
               <IconButton 
                 color="primary" 

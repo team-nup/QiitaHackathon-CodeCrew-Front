@@ -6,7 +6,13 @@ import createScene from './renderCanvas';
 
 import './canvasContaier.css'
 
-export default function Three() {
+interface ChildProps {
+  userName: string;
+  chatMessages: string[];
+}
+
+
+export default function Three(props:ChildProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
