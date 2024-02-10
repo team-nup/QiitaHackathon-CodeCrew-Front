@@ -22,8 +22,7 @@ const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     //createUserParticles(scene,3);
 
     // テキスト生成
-    const textPosition = new THREE.Vector3(1, 2, 3);
-    createText(scene, "text★", textPosition);
+
 
     // ライト
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);

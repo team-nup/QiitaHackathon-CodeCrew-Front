@@ -50,13 +50,13 @@ export default function Three(props:any) {
       case "join":
         if(scene!=null && props.chatMessage.length!=0 ){
           console.log(props.chatMessage)
-          createUserParticles(scene,1);
+          createUserParticles(scene,1, props.chatMessage.message);
         }
         break;
       case "message":
         console.log(props.chatMessage.message)
         if(scene!=null){
-          createText(scene, props.chatMessage.message+"★",  new THREE.Vector3(-9, 2, 3))
+          createText(scene, props.chatMessage.message+"★",  new THREE.Vector3(-9, 2, 3), true)
         }
         break;
       case "leave":

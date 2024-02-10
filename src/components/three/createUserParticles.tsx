@@ -1,6 +1,8 @@
 import * as THREE from 'three';
+import createText from './createText';
+import Three from './three';
 
-export default function createUserParticles(scene: THREE.Scene, count: number) {
+export default function createUserParticles(scene: THREE.Scene, count: number, targetText:string) {
   // 指定された数だけランダムな位置に球体を生成
   for (let i = 0; i < count; i++) {
     // ワイヤーフレームの球体の生成
@@ -15,5 +17,10 @@ export default function createUserParticles(scene: THREE.Scene, count: number) {
     sphere.position.set(posX, posY, posZ);
     
     scene.add(sphere);
+
+    let targetTextPos: THREE.Vector3 = new THREE.Vector3(sphere.position.x,sphere.position.y+1,sphere.position.z);
+
+    createText(scene, targetText,  targetTextPos, false);
+    //sphereと3Dtextグループ化させたい
   }
 }
