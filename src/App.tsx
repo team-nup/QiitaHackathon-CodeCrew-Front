@@ -8,6 +8,7 @@ import Room from './components/room/room'
 import SelectRoom from './components/selectRoom/selectRoom'
 import Ranking from './components/ranking/ranking'
 import Private from './components/private/private'
+import WebSocketTest from './components/test/webSocketTest'
 import NotFound from './components/notfound/notfound'
 
 import './App.css'
@@ -23,6 +24,7 @@ export default function App ()  {
       <Route path='/selectRoom' element={<SelectRoom/>} />
       <Route path='/ranking' element={<Ranking/>} />
       <Route path='/private' element={<Private/>} />
+      <Route path='/test' element={<WebSocketTest/>} />
       <Route path='*' element={<NotFound/>} />
     </Routes>
   )
