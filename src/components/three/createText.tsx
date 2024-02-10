@@ -3,12 +3,13 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 
 
-export default function createText(scene: THREE.Scene, position: THREE.Vector3) {
+export default function createText(scene: THREE.Scene, text3d: String, position: THREE.Vector3) {
 
     const fontLoader = new FontLoader()
     fontLoader.load('assets/Rounded_Mplus_1c_Medium_Regular.json', (font) => {
     console.log("loaded font!!")
-    const textGeometry = new TextGeometry("すりーじぇいえす", {
+
+    const textGeometry = new TextGeometry(`${text3d}`, {
         font: font,
         size: 0.5,
         height: 0.2,
@@ -21,7 +22,7 @@ export default function createText(scene: THREE.Scene, position: THREE.Vector3) 
     })
     textGeometry.center()
 
-    const textMaterial = new THREE.MeshStandardMaterial({ color: 0x00ffff }); 
+    const textMaterial = new THREE.MeshStandardMaterial({ color: 0xffee58 }); 
     const text = new THREE.Mesh(textGeometry, textMaterial)
     text.castShadow = true;
     text.position.copy(position); 
