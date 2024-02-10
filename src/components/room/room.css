@@ -1,3 +1,31 @@
 .main {
   height: 93vh;
 }
+
+.threeContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.AI {
+  width: 200px;
+  color: aliceblue;
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+  z-index: 2;
+}
+
+.chatAIBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(62, 165, 255);
+  border-radius: 10px;
+}
+
+.chatAIBtn h3 {
+  text-shadow: -1px -1px 0 rgb(0, 104, 195), 1px -1px 0 rgb(0, 104, 195),
+    -1px 1px 0 rgb(0, 104, 195), 1px 1px 0 rgb(0, 104, 195);
+}
