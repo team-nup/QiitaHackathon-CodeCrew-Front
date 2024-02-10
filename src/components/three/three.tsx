@@ -1,24 +1,28 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 import createScene from './renderCanvas';
 
 import './canvasContaier.css'
+import createUserParticles from './createUserParticles';
+import { useScrollTrigger } from '@mui/material';
 
-interface ChildProps {
+interface ChatData {
+  message: string;
   userName: string;
-  chatMessages: string[];
-}
+  action: string;
+};
 
 
-export default function Three(props:ChildProps) {
+export default function Three(props:any) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [scene, setScene] = useState<THREE.Scene | null>(null);
 
   useEffect(() => {
     // シーンの作成
     const { scene, camera, renderer } = createScene(canvasRef);
-
+    setScene(scene);
     // モデルの読み込み
     let model: THREE.Object3D;
     const loader = new GLTFLoader();
@@ -42,6 +46,25 @@ export default function Three(props:ChildProps) {
       animate();
     });
   }, []);
+
+  useEffect(()=>{
+    if(props.chatMessage)
+    switch(props.chatMessage.action){
+      case "join":
+        if(scene!=null && props.chatMessage.length!=0 ){
+          console.log(props.chatMessage)
+          createUserParticles(scene,1);
+        }
+        break;
+      case "message":
+        console.log(props.chatMessage.message)
+        break;
+      case "leave":
+        //userName一意である必要がある
+        console.log(props.chatMessage.userName);
+        break;
+    }
+  },[props.chatMessage])
 
   return <canvas ref={canvasRef} className='canvasContaier'/>;
 }
