@@ -7,7 +7,7 @@ export default function WebSocketTest() {
   const [userName, setUserName] = useState<string>('');
   const [chatMessages, setChatMessages] = useState<string[]>([]);
 
-  const handleJoinRoom = () => {
+  const joinRoom = () => {
 
     if (roomName) {
       const wsUrl = `ws://localhost:8000/public/${roomName}`;
@@ -29,11 +29,6 @@ export default function WebSocketTest() {
         setChatMessages(prevMessages => [...prevMessages, message]);
       };
 
-      return () => {
-        if (newSocket.readyState === WebSocket.OPEN) {
-          newSocket.close();
-        }
-      };
     }
   };
 
@@ -49,13 +44,28 @@ export default function WebSocketTest() {
     }
   };
 
+  const leaveRoom = () => {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      const dataToSend = {
+        message: "",
+        userName: userName,
+        action: "leave"
+      };
+      socket.send(JSON.stringify(dataToSend));
+      console.log("close")
+      //socket.close(1000,"");
+      window.location.href = '/';
+    }
+  }
+
   return (
     <div>
       <input type="text" value={roomName} onChange={(e) => setRoomName(e.target.value)} />
-      <button onClick={handleJoinRoom}>参加</button>
+      <button onClick={joinRoom}>参加</button>
       <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
       <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
       <button onClick={sendMessage}>送信</button>
+      <button onClick={leaveRoom}>退出</button>
       <div>
         {chatMessages.map((msg, index) => (
           <p key={index}>{msg}</p>
