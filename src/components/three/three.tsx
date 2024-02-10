@@ -4,7 +4,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 import createScene from './renderCanvas';
 
-export default function Three() {
+interface ChildProps {
+  userName: string;
+  chatMessages: string[];
+}
+
+export default function Three(props:ChildProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {

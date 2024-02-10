@@ -68,7 +68,7 @@ export default function Room() {
     return (
       <main className="main">
         <h1>Room</h1>
-        <Three />
+        <Three userName={userName} chatMessages={chatMessages} />
         <Button
             variant="outlined"
             size="large"
