@@ -65,10 +65,12 @@ const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     
     const size = 5;
     const axesHelper = new THREE.AxesHelper( size );
+
     scene.add( axesHelper );
 
     const divisions = 10;
-    const gridHelper = new THREE.GridHelper( 10, divisions );
+    const gridHelper = new THREE.GridHelper( 20, divisions );
+    gridHelper.position.set(0,-1,0);
     scene.add( gridHelper );
 
     // レンダラー

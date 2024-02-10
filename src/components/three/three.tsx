@@ -24,11 +24,12 @@ export default function Three(props:any) {
     const loader = new GLTFLoader();
     loader.load('assets/earth.glb', (gltf) => {
       model = gltf.scene;
+      model.position.set(0,-1,0);
       scene.add(model);
 
       // カメラの位置を設定
       camera.position.set(0, 1, 5);
-      camera.lookAt(0, 3, 0);
+      //camera.lookAt(0, 3, 0);
 
       // レンダリングループ
       const animate = () => {

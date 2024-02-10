@@ -12,7 +12,7 @@ export default function createUserParticles(scene: THREE.Scene, count: number, t
     
     // ランダムな位置に配置
     const posX = Math.random() * 10 - 5; // X座標を-5から5の範囲でランダムに設定
-    const posY = Math.random() * 10 - 5; // Y座標を-5から5の範囲でランダムに設定
+    const posY = Math.random() * 5; 
     const posZ = Math.random() * 10 - 5; // Z座標を-5から5の範囲でランダムに設定
     sphere.position.set(posX, posY, posZ);
     
