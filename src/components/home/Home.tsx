@@ -22,13 +22,24 @@ export default function Home() {
               <h1>作業中にもつながりを</h1>
               <h1>一緒に作業してみませんか？</h1> 
             </div>
-            <Button 
-              variant="outlined"
-              size="large"
-              endIcon={<ArrowForwardIcon />}
-              onClick={() => { navigate('login')}}>
-                <h1>はじめる</h1>
-            </Button>
+            <div className='homeBtnContainer'>
+              <div className='homeBtnContainer1'>
+                <Button 
+                  variant="outlined"
+                  size="large"
+                  endIcon={<ArrowForwardIcon />}
+                  onClick={() => { navigate('/signin')}}>
+                    <h1>ログイン</h1>
+                </Button>
+              </div>
+              <Button 
+                variant="outlined"
+                size="large"
+                endIcon={<ArrowForwardIcon />}
+                onClick={() => { navigate('/signup')}}>
+                  <h1>初めての方はこちら</h1>
+              </Button>
+            </div>
           </div>
         </main>
       </>

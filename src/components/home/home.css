@@ -38,3 +38,15 @@ img {
   align-items: center;
   margin-bottom: 5%;
 }
+
+.homeBtnContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeBtnContainer1 {
+  margin-right: 5%;
+}
