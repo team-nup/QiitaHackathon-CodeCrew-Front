@@ -6,18 +6,11 @@ import createScene from './renderCanvas';
 
 import './canvasContaier.css'
 import createUserParticles from './createUserParticles';
-import { useScrollTrigger } from '@mui/material';
-import createText from './createText';
 
-interface ChatData {
-  message: string;
-  userName: string;
-  action: string;
-};
-
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Three(props:any) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  console.log(props)
   const [scene, setScene] = useState<THREE.Scene | null>(null);
 
   console.log(props);
