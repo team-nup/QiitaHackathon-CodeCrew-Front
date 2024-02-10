@@ -4,15 +4,20 @@ import IconButton from '@mui/material/IconButton';
 import SmartToyTwoToneIcon from '@mui/icons-material/SmartToyTwoTone';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import RoomPageHeader from '../header/roomPageHeader';
+import { startGemini } from '../../service/api/geminiapi/gemini';
+
 import './room.css'
+import './gemini.css'
 
 export default function Room() {
 
   const [popupActive, setPopupActive] = useState(false);
   const [isclicedAIhelpBtn, setIsclicedAIhelpBtn] = useState('AIに相談する');
-  const [inputText, setInputText] = useState('');
+  
   const [socket, setSocket] = useState<WebSocket>();
   const [message, setMessage] = useState<string>('');//送る
   const [userName, setUserName] = useState<string>('');
@@ -21,13 +26,18 @@ export default function Room() {
   // 表示情報について
   const [isInputInfo, setInputInfo] =useState(true); 
 
+  // gemini関連
+  const [inputText, setInputText] = useState('');
+  const [outputText, setOutputText] = useState('応答を結果を出力');
+  const [isloadFlg, setLoadFlg] = useState(false);
+  const[ isClickedBtn, setisClickedBtn] = useState(false);
+
   const callGemini = async () => {
-    // setisClickedBtn(true);
-    // setLoadFlg(false);
-    // const response = await startGemini(inputText);
-    // setOutputText(response);
-    // setLoadFlg(true);
-    console.log(inputText)
+    setisClickedBtn(true);
+    setLoadFlg(false);
+    const response = await startGemini(inputText);
+    setOutputText(response);
+    setLoadFlg(true);
   }
 
   const togglePopup = () => {
@@ -139,22 +149,35 @@ export default function Room() {
             </main>
             <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
               <h3>AIと相談</h3>
-              <div className='inputTextContainer'>
-                <TextField 
-                  fullWidth  
-                  label="input message" 
-                  variant="filled" 
-                  color="primary"
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  onChange={(e:any) => setInputText(e.target.value)}/>
-                <div className='isClicledChatBtn'>
-                  <IconButton 
-                    color="primary" 
-                    aria-label="add to shopping cart" 
-                    size="large"
-                    onClick={callGemini}>
-                      <SendIcon fontSize="inherit" className='text-white'/>
-                  </IconButton>
+              <div className='geminiContaienr'>
+              <div className='outputGeminiContainer'>
+                  {isClickedBtn ? (
+                    <div>
+                      {isloadFlg ?
+                        (<h2>{outputText}</h2>):(
+                          <Box>
+                            <CircularProgress />
+                          </Box>
+                      )}
+                    </div>):(<h2>{outputText}</h2>)}
+                </div>
+                <div className='inputTextContainer'>
+                  <TextField 
+                    fullWidth  
+                    label="input message" 
+                    variant="filled" 
+                    color="primary"
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    onChange={(e:any) => setInputText(e.target.value)}/>
+                  <div className='isClicledChatBtn'>
+                    <IconButton 
+                      color="primary" 
+                      aria-label="add to shopping cart" 
+                      size="large"
+                      onClick={callGemini}>
+                        <SendIcon fontSize="inherit" className='text-white'/>
+                    </IconButton>
+                  </div>
                 </div>
               </div>
             </div>
