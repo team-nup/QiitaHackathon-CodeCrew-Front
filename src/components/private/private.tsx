@@ -2,6 +2,8 @@
 
 export default function Private() {
     return (
-      <div>Private</div>
+      <main className="main">
+        <div>Private</div>
+      </main>
     )
 }

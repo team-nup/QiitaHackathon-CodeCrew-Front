@@ -3,6 +3,8 @@
 
 export default function Home() {
     return (
-      <div>Home</div>
+      <main className="main">
+        <div>Home</div>
+      </main>
     )
   }

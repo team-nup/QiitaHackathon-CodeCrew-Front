@@ -3,6 +3,8 @@
 
 export default function Login() {
     return (
-      <div>Login</div>
+      <main className="main">
+        <div>Login</div>
+      </main>
     )
   }

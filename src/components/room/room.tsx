@@ -2,6 +2,8 @@
 
 export default function Room() {
     return (
-      <div>Room</div>
+      <main className="main">
+        <div>Room</div>
+      </main>
     )
 }

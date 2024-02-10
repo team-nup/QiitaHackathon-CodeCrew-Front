@@ -2,7 +2,9 @@
 
 export default function SignUp() {
     return (
-      <div>SignUp</div>
+      <main className="main">
+        <div>SignUp</div>
+      </main>
     )
 }
 

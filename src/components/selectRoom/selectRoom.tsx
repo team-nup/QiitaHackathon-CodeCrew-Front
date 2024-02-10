@@ -2,6 +2,8 @@
 
 export default function SelectRoom() {
     return (
-      <div>SelectRoom</div>
+      <main className="main">
+        <div>SelectRoom</div>
+      </main>
     )
   }

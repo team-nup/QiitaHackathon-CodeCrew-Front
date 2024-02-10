@@ -3,6 +3,8 @@
 
 export default function Ranking() {
     return (
-      <div>Ranking</div>
+      <main className="main">
+        <div>Ranking</div>
+      </main>
     )
 }
