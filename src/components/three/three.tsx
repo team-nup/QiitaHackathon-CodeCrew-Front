@@ -4,6 +4,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 import createScene from './renderCanvas';
 
+import './canvasContaier.css'
+
 export default function Three() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -35,5 +37,5 @@ export default function Three() {
     });
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas ref={canvasRef} className='canvasContaier'/>;
 }
