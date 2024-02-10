@@ -3,7 +3,7 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 
 
-export default function createText(scene: THREE.Scene, text3d: String, position: THREE.Vector3) {
+export default function createText(scene: THREE.Scene, text3d: String, position: THREE.Vector3):any {
 
     const fontLoader = new FontLoader()
     fontLoader.load('assets/Rounded_Mplus_1c_Medium_Regular.json', (font) => {
@@ -27,6 +27,8 @@ export default function createText(scene: THREE.Scene, text3d: String, position:
     text.castShadow = true;
     text.position.copy(position); 
     scene.add(text)
+
+    return text;
     })
 }
 

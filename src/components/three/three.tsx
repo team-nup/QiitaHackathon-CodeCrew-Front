@@ -7,6 +7,7 @@ import createScene from './renderCanvas';
 import './canvasContaier.css'
 import createUserParticles from './createUserParticles';
 import { useScrollTrigger } from '@mui/material';
+import createText from './createText';
 
 interface ChatData {
   message: string;
@@ -41,6 +42,7 @@ export default function Three(props:any) {
         if (model) {
           model.rotation.y += 0.001;
         }
+
         renderer.render(scene, camera);
       };
       animate();
@@ -58,6 +60,9 @@ export default function Three(props:any) {
         break;
       case "message":
         console.log(props.chatMessage.message)
+        if(scene!=null){
+          createText(scene, props.chatMessage.message+"★",  new THREE.Vector3(1, 2, 3))
+        }
         break;
       case "leave":
         //userName一意である必要がある
