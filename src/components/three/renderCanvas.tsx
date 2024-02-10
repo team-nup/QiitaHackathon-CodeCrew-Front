@@ -19,7 +19,7 @@ const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     createParticles(scene);
 
     // ユーザ（ワイヤーフレームの球体）
-    createUserParticles(scene,3);
+    //createUserParticles(scene,3);
 
     // テキスト生成
     const textPosition = new THREE.Vector3(1, 2, 3);
