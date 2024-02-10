@@ -3,15 +3,13 @@ import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
 import createParticles from './createParticles';
 import createUserParticles from './createUserParticles';
-
-
-
+import createText from './createText';
 
 // シーンの作成
 const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     const sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: window.innerWidth * 0.95,
+      height: window.innerHeight * 0.85,
     };
 
     // シーン
@@ -22,6 +20,10 @@ const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
 
     // ユーザ（ワイヤーフレームの球体）
     createUserParticles(scene,3);
+
+    // テキスト生成
+    const textPosition = new THREE.Vector3(1, 2, 3);
+    createText(scene, textPosition);
 
     // ライト
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
