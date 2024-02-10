@@ -8,6 +8,12 @@ import Gemini from '../room/gemini';
 import './room.css'
 import './gemini.css'
 
+type ChatData = {
+  message: string;
+  userName: string;
+  action: string;
+};
+
 export default function Room() {
 
   const [popupActive, setPopupActive] = useState(false);
@@ -16,7 +22,7 @@ export default function Room() {
   const [socket, setSocket] = useState<WebSocket>();
   const [message, setMessage] = useState<string>('');//送る
   const [userName, setUserName] = useState<string>('');
-  const [chatMessages, setChatMessages] = useState<string[]>([]);//受け取り
+  const [chatMessage, setChatMessage] = useState<ChatData>();//受け取り
   
   // 表示情報について
   const [isInputInfo, setInputInfo] =useState(true); 
@@ -31,6 +37,14 @@ export default function Room() {
       setIsclicedAIhelpBtn('チャットを閉じる');
     }
   };
+
+  const screenSwitching = () => {
+        // 画面の切り替え
+        setInputInfo(false);
+        console.log('hoge')
+        const beforeInfoElm =  document.getElementById('beforeInputInfo')!
+        beforeInfoElm.classList.add('isInputInfo')
+  }
 
   const joinRoom = () => {
     const roomNum: string= "1" ;
@@ -51,19 +65,15 @@ export default function Room() {
 
       newSocket.onmessage = (event) => {
         const message = event.data;
-        setChatMessages(prevMessages => [...prevMessages, message]);
+        console.log(message);
+        const paseMessage : ChatData =JSON.parse(message); 
+        setChatMessage(paseMessage);
       };
 
     }
   };
 
   const sendMessage = () => {
-
-    // 画面の切り替え
-    setInputInfo(false);
-    console.log('hoge')
-    const beforeInfoElm =  document.getElementById('beforeInputInfo')!
-    beforeInfoElm.classList.add('isInputInfo')
 
     if (socket && socket.readyState === WebSocket.OPEN) {
       const dataToSend = {
@@ -98,20 +108,14 @@ export default function Room() {
             <button onClick={joinRoom}>参加</button>
             <input type="text" placeholder='ユーザ名' value={userName} onChange={(e) => setUserName(e.target.value)} />
             <input type="text" placeholder='目標' value={message} onChange={(e) => setMessage(e.target.value)} />
-            <button onClick={()=>{ sendMessage() }}>送信</button>
-            <button onClick={leaveRoom}>退出</button>
-            <div>
-              {chatMessages.map((msg, index) => (
-              <p key={index}>{msg}</p>
-              ))}
-            </div>
+            <button onClick={ screenSwitching }>送信</button>
           </div>
         ):(
           <div className='InputedInfoScreen'>
             <RoomPageHeader />
             <main className="main">
               <div className='threeContainer'>
-                <Three userName={userName} chatMessages={chatMessages} />
+                <Three chatMessage={chatMessage} />
                 <div className='AI'>
                     <div className='chatAIBtn'>
                       <h3>{isclicedAIhelpBtn}</h3>
@@ -127,6 +131,9 @@ export default function Room() {
                     </div>
                 </div>
               </div>
+              <input type="text" placeholder="メッセージ" value={message} onChange={(e) => setMessage(e.target.value)} />
+              <button onClick={ sendMessage }>送信</button>
+              <button onClick={leaveRoom}>退出</button>
             </main>
             <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
               <Gemini />
