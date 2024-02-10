@@ -1,6 +1,12 @@
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
+import { Link } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom'
 
 import './header.css'
@@ -10,14 +16,29 @@ export default function Header() {
   
   return (
     <header className='header'>
-        <h1>Commit Space</h1>
-        <Button
-            variant="outlined"
-            size="large"
-            endIcon={<AutoGraphIcon />}
-            onClick={() => { navigate('/ranking')}}>
-            ランキング
-        </Button>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+                <Link to="/" className="header-link">
+                  Commit Space
+                </Link>
+              </Typography>
+              <Button color="inherit" onClick={() => { navigate('/ranking')}}>
+                <p className="rankigBtn" >ランキング</p>
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Box>
     </header>
   )
 }
