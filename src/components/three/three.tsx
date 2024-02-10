@@ -12,10 +12,8 @@ import createText from './createText';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Three(props:any) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  console.log(props)
-  const [scene, setScene] = useState<THREE.Scene | null>(null);
 
-  console.log(props);
+  const [scene, setScene] = useState<THREE.Scene | null>(null);
 
   useEffect(() => {
     // シーンの作成

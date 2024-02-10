@@ -14,7 +14,6 @@ type ChatData = {
   action: string;
 };
 
-
 export default function Room() {
 
   const [popupActive, setPopupActive] = useState(false);
@@ -133,7 +132,7 @@ export default function Room() {
                 </div>
               </div>
               <input type="text" placeholder="メッセージ" value={message} onChange={(e) => setMessage(e.target.value)} />
-              <button onClick={()=>{ sendMessage }}>送信</button>
+              <button onClick={ sendMessage }>送信</button>
               <button onClick={leaveRoom}>退出</button>
             </main>
             <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
