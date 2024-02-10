@@ -6,3 +6,14 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.header-link {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+.rankigBtn {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
