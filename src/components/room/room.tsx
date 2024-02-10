@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Three from '../three/three';
 import IconButton from '@mui/material/IconButton';
 import SmartToyTwoToneIcon from '@mui/icons-material/SmartToyTwoTone';
@@ -7,6 +8,12 @@ import RoomPageHeader from '../header/roomPageHeader';
 import './room.css'
 
 export default function Room() {
+
+  const [popupActive, setPopupActive] = useState(false);
+
+  const togglePopup = () => {
+    setPopupActive(!popupActive);
+  };
   
     return (
       <>
@@ -21,7 +28,7 @@ export default function Room() {
                     color="primary" 
                     aria-label="add to shopping cart" 
                     size="large"
-                    onClick={() => { alert('hoge')}}>
+                    onClick={() => togglePopup()}>
                       <SmartToyTwoToneIcon 
                         fontSize="inherit"
                         style={{ color: 'white' }}/>
@@ -30,6 +37,10 @@ export default function Room() {
             </div>
           </div>
         </main>
+        <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
+          <h3>ポップアップのコンテンツ</h3>
+          <button onClick={togglePopup}>Close Popup</button>
+        </div>
       </>
     )
 }
