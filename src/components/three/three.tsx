@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+import createScene from './renderCanvas';
 
 export default function Three() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -17,49 +19,21 @@ export default function Three() {
       scene.add(model);
 
       // カメラの位置を設定
-      camera.position.z = 5;
+      camera.position.set(0, 1, 5);
+      camera.lookAt(0, 3, 0);
 
       // レンダリングループ
       const animate = () => {
         requestAnimationFrame(animate);
         // モデルの回転
         if (model) {
-          model.rotation.y += 0.01;
+          model.rotation.y += 0.001;
         }
         renderer.render(scene, camera);
       };
       animate();
     });
   }, []);
-
-  // シーンの作成
-  const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
-    const sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-
-    // シーン
-    const scene = new THREE.Scene();
-
-    // ライト
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(0, 1, 0);
-    scene.add(directionalLight);
-
-    // カメラ
-    const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
-    camera.position.set(0, 0, 5);
-    scene.add(camera);
-
-    // レンダラー
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current!,
-    });
-    renderer.setSize(sizes.width, sizes.height);
-
-    return { sizes, scene, camera, renderer };
-  };
 
   return <canvas ref={canvasRef} />;
 }
