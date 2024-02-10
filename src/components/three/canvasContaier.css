@@ -1,0 +1,5 @@
+.canvasContaier {
+  border: 3px solid red;
+  border-radius: 15px;
+  z-index: -1;
+}

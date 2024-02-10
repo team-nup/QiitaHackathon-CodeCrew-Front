@@ -1,8 +1,3 @@
-import Button from '@mui/material/Button';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
-import {useNavigate } from 'react-router-dom'
-
 import Three from '../three/three';
 import { useEffect, useState } from 'react';
 
