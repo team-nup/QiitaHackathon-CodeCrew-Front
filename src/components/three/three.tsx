@@ -20,6 +20,8 @@ export default function Three(props:any) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [scene, setScene] = useState<THREE.Scene | null>(null);
 
+  console.log(props);
+
   useEffect(() => {
     // シーンの作成
     const { scene, camera, renderer } = createScene(canvasRef);
