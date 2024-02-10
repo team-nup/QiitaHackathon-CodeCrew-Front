@@ -37,8 +37,8 @@ const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
 
     // カメラコントローラーを作成
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const controls = new OrbitControls(camera, document.body);
-
+    const controls = new OrbitControls(camera, canvasRef.current!);
+    
     const size = 5;
     const axesHelper = new THREE.AxesHelper( size );
     scene.add( axesHelper );
