@@ -65,3 +65,49 @@
 .isClicledChatBtn {
   background-color: rgb(160, 211, 255);
 }
+
+/* 表示情報入力1 */
+#beforeInputInfo {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(160, 211, 255);
+}
+
+/* 表示情報入力2 */
+.isInputInfo {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(160, 211, 255);
+  animation: fadeout 6s;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* メイン画面の表示 */
+.InputedInfoScreen {
+  animation: fadein 4s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
