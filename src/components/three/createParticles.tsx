@@ -4,7 +4,7 @@ import * as THREE from 'three';
 export default function createParticles(scene: THREE.Scene) {
   // ジオメトリ
   const particlesGeometry = new THREE.BufferGeometry();
-  const numberOfParticles = 800;
+  const numberOfParticles = 1000;
   const positionArr = new Float32Array(numberOfParticles * 3);
 
   for (let i = 0; i < numberOfParticles * 3; i++) {

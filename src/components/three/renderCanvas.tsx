@@ -1,8 +1,10 @@
 import * as THREE from 'three';
-
+import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
 import createParticles from './createParticles';
-import { OrbitControls } from 'three/examples/jsm/Addons.js';
+import createUserParticles from './createUserParticles';
+
+
 
 
 // シーンの作成
@@ -15,8 +17,11 @@ const createScene = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
     // シーン
     const scene = new THREE.Scene();
 
-     // パーティクルの生成
-     createParticles(scene);
+    // パーティクルの生成
+    createParticles(scene);
+
+    // ユーザ（ワイヤーフレームの球体）
+    createUserParticles(scene,3);
 
     // ライト
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
