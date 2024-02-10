@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import createText from './createText';
+import Three from './three';
 
 export default function createUserParticles(scene: THREE.Scene, count: number) {
   // 指定された数だけランダムな位置に球体を生成
@@ -17,6 +18,9 @@ export default function createUserParticles(scene: THREE.Scene, count: number) {
     
     scene.add(sphere);
 
-    createText(scene, "★",  new THREE.Vector3(-9, 2, 3), true);
+    let targetTextPos: THREE.Vector3 = new THREE.Vector3(sphere.position.x,sphere.position.y+1,sphere.position.z);
+
+    createText(scene, "頑張る",  targetTextPos, false);
+    //sphereと3Dtextグループ化させたい
   }
 }
