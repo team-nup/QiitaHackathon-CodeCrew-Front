@@ -6,15 +6,14 @@ import createScene from './renderCanvas';
 
 import './canvasContaier.css'
 import createUserParticles from './createUserParticles';
+import createText from './createText';
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function Three(props:any) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  console.log(props)
-  const [scene, setScene] = useState<THREE.Scene | null>(null);
 
-  console.log(props);
+  const [scene, setScene] = useState<THREE.Scene | null>(null);
 
   useEffect(() => {
     // シーンの作成
@@ -38,6 +37,7 @@ export default function Three(props:any) {
         if (model) {
           model.rotation.y += 0.001;
         }
+
         renderer.render(scene, camera);
       };
       animate();
@@ -55,6 +55,9 @@ export default function Three(props:any) {
         break;
       case "message":
         console.log(props.chatMessage.message)
+        if(scene!=null){
+          createText(scene, props.chatMessage.message+"★",  new THREE.Vector3(-9, 2, 3))
+        }
         break;
       case "leave":
         //userName一意である必要がある
