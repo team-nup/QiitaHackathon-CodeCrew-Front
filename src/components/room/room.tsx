@@ -8,6 +8,13 @@ import SendIcon from '@mui/icons-material/Send';
 import RoomPageHeader from '../header/roomPageHeader';
 import './room.css'
 
+type ChatData = {
+  message: string;
+  userName: string;
+  action: string;
+};
+
+
 export default function Room() {
 
   const [popupActive, setPopupActive] = useState(false);
@@ -16,7 +23,7 @@ export default function Room() {
   const [socket, setSocket] = useState<WebSocket>();
   const [message, setMessage] = useState<string>('');//送る
   const [userName, setUserName] = useState<string>('');
-  const [chatMessages, setChatMessages] = useState<string[]>([]);//受け取り
+  const [chatMessage, setChatMessage] = useState<ChatData>();//受け取り
 
   const callGemini = async () => {
     // setisClickedBtn(true);
@@ -41,13 +48,13 @@ export default function Room() {
   const joinRoom = () => {
     const roomNum: string= "1" ;
     if (roomNum) {
-      const wsUrl = `ws://localhost:8000/public/${roomNum}`;
+      const wsUrl = `ws://localhost:8000/public/"1"`;
       const newSocket = new WebSocket(wsUrl);
       setSocket(newSocket);
 
       newSocket.onopen = () => {
         console.log("チャット開始");
-        const dataToSend = {
+        const dataToSend:ChatData = {
           message: "プログラミング頑張ります",
           userName: "userName",
           action: "join"
@@ -57,7 +64,8 @@ export default function Room() {
 
       newSocket.onmessage = (event) => {
         const message = event.data;
-        setChatMessages(prevMessages => [...prevMessages, message]);
+        const paseMessage : ChatData =JSON.parse(message); 
+        setChatMessage(paseMessage);
       };
 
     }
@@ -94,7 +102,7 @@ export default function Room() {
         <RoomPageHeader />
         <main className="main">
           <div className='threeContainer'>
-            <Three userName={userName} chatMessages={chatMessages} />
+            <Three  chatMessage={chatMessage} />
             <div className='AI'>
                 <div className='chatAIBtn'>
                   <h3>{isclicedAIhelpBtn}</h3>
@@ -116,11 +124,6 @@ export default function Room() {
         <input type="text" placeholder='message' value={message} onChange={(e) => setMessage(e.target.value)} />
         <button onClick={sendMessage}>送信</button>
         <button onClick={leaveRoom}>退出</button>
-        <div>
-          {chatMessages.map((msg, index) => (
-            <p key={index}>{msg}</p>
-          ))}
-        </div>
         {/*  */}
         </main>
         <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
