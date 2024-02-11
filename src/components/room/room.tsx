@@ -134,8 +134,6 @@ export default function Room() {
                     </div>
                 </div>
               </div>
-              {/* ↓修正して、ヘッダーの退出に */}
-              <button onClick={leaveRoom}>退出</button>
             </main>
             <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
               <Gemini />
@@ -149,7 +147,7 @@ export default function Room() {
                   label="メッセージを入力" 
                   variant="filled" 
                   color="primary"
-                  onClick={ sendMessage }
+                  autoComplete="off"
                   value={message} onChange={(e) => setMessage(e.target.value)}/>
                 </div>
                 <div className='isClicledChatBtn'>
@@ -157,7 +155,7 @@ export default function Room() {
                         color="primary" 
                         aria-label="add to shopping cart" 
                         size="large"
-                        onClick={() =>{}}>
+                        onClick={sendMessage}>
                         <SendIcon fontSize="inherit" className='text-white'/>
                     </IconButton>
                 </div>
