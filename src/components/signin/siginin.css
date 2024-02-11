@@ -3,7 +3,6 @@ h1 {
 }
 
 .singinIcon {
-  
 }
 
 .signInMain {
@@ -29,8 +28,9 @@ h1 {
   margin: 1% 0;
 }
 
-#inpuelemBottom {
-  margin-bottom: 5%;
+.inputElements:nth-child(2) {
+  width: 50%;
+  margin-bottom: 8%;
 }
 
 .loginBtn {

@@ -41,7 +41,7 @@ export default function SignIn() {
               color="primary"
               onChange={(e) => {setMailValue(e.target.value)}}/>
           </div>
-          <div id='inpuelemBottom' className='inputElements'>
+          <div className='inputElements'>
             <TextField 
               type="password"
               fullWidth  

@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import Three from '../three/three';
 import IconButton from '@mui/material/IconButton';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ForumIcon from '@mui/icons-material/Forum';
 import SmartToyTwoToneIcon from '@mui/icons-material/SmartToyTwoTone';
 import RoomPageHeader from '../header/roomPageHeader';
+import Button from '@mui/material/Button';
 import Gemini from '../room/gemini';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -109,9 +112,35 @@ export default function Room() {
       <>
         {isInputInfo ? (
           <div id='beforeInputInfo'>
-            <input type="text" placeholder='ユーザ名' value={userName} onChange={(e) => setUserName(e.target.value)} />
-            <input type="text" placeholder='目標' value={message} onChange={(e) => setMessage(e.target.value)} />
-            <button onClick={ joinRoom }>ルームに参加</button>
+            <ForumIcon sx={{ fontSize: '150px', color: 'white'}}/>
+            <div className='showedRoomInfo'>
+              <TextField 
+                type="email"
+                fullWidth  
+                label="ユーザ名を入力してください" 
+                variant="filled" 
+                color="primary"
+                onChange={(e) => setUserName(e.target.value)}/>
+            </div>
+            <div className='showedRoomInfo'>
+              <TextField 
+                type="email"
+                fullWidth  
+                label="目標を入力してください" 
+                variant="filled" 
+                color="primary"
+                onChange={(e) => setMessage(e.target.value)}/>
+            </div>
+            <div className='joinRoomBtn'>
+              <Button 
+                variant="outlined"
+                size="large"
+                endIcon={<ArrowForwardIcon />}
+                onClick={() => { joinRoom()}}
+                sx={{ fontSize: '25px' }}>
+                ルームに参加
+              </Button>
+          </div>
           </div>
         ):(
           <div className='InputedInfoScreen'>
