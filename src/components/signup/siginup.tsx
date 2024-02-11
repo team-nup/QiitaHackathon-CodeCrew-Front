@@ -9,6 +9,7 @@ import {useNavigate } from 'react-router-dom'
 import Header from '../header/header';
 
 import './signup.css'
+import { clickedSignUpBtn } from '../../service/api/supabase/signup';
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default function SignIn() {
   function handleSubmit () {
     console.log(mailValue)
     console.log(psValue)
+    clickedSignUpBtn(mailValue, psValue ,"userName"); // clickedSignUpBtn を呼び出し
     navigate('/selectRoom')
   }
 
