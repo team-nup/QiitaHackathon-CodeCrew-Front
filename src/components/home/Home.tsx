@@ -19,7 +19,7 @@ export default function Home() {
           <div className='rightContainer'>
             <div className='titleContainer'>
               <h1 className='title'>Commit Space</h1>
-              <h1>作業中にもつながりを</h1>
+              <h1 className='title2'>つながりを生む作業スペース</h1>
               <h1>一緒に作業してみませんか？</h1> 
             </div>
             <div className='homeBtnContainer'>
