@@ -39,6 +39,7 @@ export default function SignIn() {
               label="メールアドレスを入力してください" 
               variant="filled" 
               color="primary"
+              autoComplete="off"
               onChange={(e) => {setMailValue(e.target.value)}}/>
           </div>
           <div id='inpuelemBottom' className='inputElements'>
@@ -48,6 +49,7 @@ export default function SignIn() {
               label="パスワードを入力してください" 
               variant="filled" 
               color="primary"
+              autoComplete="off"
               onChange={(e) => {setPsValue(e.target.value)}}/>
           </div>
           <div className='loginBtn'>
