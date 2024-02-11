@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { Link } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom'
@@ -34,7 +35,7 @@ export default function Header() {
                 </Link>
               </Typography>
               <Button color="inherit" onClick={() => { navigate('/ranking')}}>
-                <p className="rankigBtn" >ランキング</p>
+                <AccountCircleIcon sx={{ fontSize: 50 }}/>
               </Button>
             </Toolbar>
           </AppBar>

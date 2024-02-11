@@ -1,38 +1,48 @@
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import LogoutIcon from '@mui/icons-material/Logout';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import { Link } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom'
 
-import './roomPageHeader.css'
+import './header.css'
 
-export default function RoomPageHeader() {
+export default function Header() {
   const navigate = useNavigate();
   
-  function hoge () {
-    console.log('hoge log')
-    navigate('/selectRoom')
-  }
-
   return (
     <header className='header'>
-        <h1>Commit Space</h1>
-        <div>
-            <Button
-                variant="outlined"
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
                 size="large"
-                endIcon={<LogoutIcon />}
-                onClick={() => { hoge();}}>
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+                <Link to="/" className="header-link">
+                  Commit Space
+                </Link>
+              </Typography>
+              <Button color="inherit" sx={{ fontSize: 25 }} onClick={() => { navigate('/ranking')}}>
                 退出
-            </Button>
-            <Button
-                variant="outlined"
-                size="large"
-                endIcon={<AutoGraphIcon />}
-                onClick={() => { navigate('/ranking')}}>
-                ほげほげ
-            </Button>
-        </div>
+              </Button>
+              <Button color="inherit" onClick={() => { navigate('/ranking')}}>
+                <AccountCircleIcon sx={{ fontSize: 50 }}/>
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Box>
     </header>
   )
 }
