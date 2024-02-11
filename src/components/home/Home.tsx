@@ -14,7 +14,7 @@ export default function Home() {
         <Header></Header>
         <main className="headerMain">
           <div className='leftContainer'>
-            <img src='assets/commit_space.png' alt="" />
+            <img src='assets/pcsiteimg.png' alt="" />
           </div>
           <div className='rightContainer'>
             <div className='titleContainer'>

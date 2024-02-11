@@ -146,3 +146,13 @@
 #inpuelemBottom {
   width: 80%;
 }
+
+.showedRoomInfo {
+  width: 50%;
+  background-color: white;
+  margin: 1% 0;
+}
+
+.joinRoomBtn {
+  margin-top: 5%;
+}
