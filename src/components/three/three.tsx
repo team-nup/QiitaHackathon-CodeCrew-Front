@@ -57,7 +57,7 @@ export default function Three(props:any) {
       case "message":
         console.log(props.chatMessage.message)
         if(scene!=null){
-          createText(scene, props.chatMessage.message+"★",  new THREE.Vector3(-9, 2, 3), true)
+          createText(scene, props.chatMessage.message+"★",  new THREE.Vector3(-9, 2, 4), true)
         }
         break;
       case "leave":
