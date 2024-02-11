@@ -10,6 +10,7 @@ import {useNavigate } from 'react-router-dom'
 import Header from '../header/header';
 
 import './siginin.css'
+import { doLogin } from '../../service/api/supabase/login';
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -19,8 +20,7 @@ export default function SignIn() {
   const [psValue, setPsValue] = useState('');
 
   function handleSubmit () {
-    console.log(mailValue)
-    console.log(psValue)
+    doLogin(mailValue, psValue);
     navigate('/selectRoom')
   }
 
