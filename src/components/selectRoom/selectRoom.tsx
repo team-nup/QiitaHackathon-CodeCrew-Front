@@ -18,7 +18,7 @@ export default function SelectRoom() {
           <h1 style={{ marginBottom: "70px" }}>SelectRoom</h1>
           <div className="selectRoomContainer">
             <div className="roomItem">
-            <PublicIcon fontSize="large" style={{ marginBottom: "10px" }} />
+            <PublicIcon sx={{ fontSize: 60 }} style={{ marginBottom: "30px" }} />
             <Button
               variant="outlined"
               size="large"
@@ -28,7 +28,7 @@ export default function SelectRoom() {
             </Button>
           </div>
           <div className="roomItem">
-            <LockIcon fontSize="large" style={{ marginBottom: "10px" }} />
+            <LockIcon sx={{ fontSize: 60 }} style={{ marginBottom: "30px" }} />
             <Button
               variant="outlined"
               size="large"
