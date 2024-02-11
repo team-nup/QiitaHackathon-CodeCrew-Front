@@ -7,6 +7,7 @@ import Gemini from '../room/gemini';
 
 import './room.css'
 import './gemini.css'
+import { TextField } from '@mui/material';
 
 type ChatData = {
   message: string;
@@ -132,12 +133,23 @@ export default function Room() {
                     </div>
                 </div>
               </div>
-              <input type="text" placeholder="メッセージ" value={message} onChange={(e) => setMessage(e.target.value)} />
-              <button onClick={ sendMessage }>送信</button>
               <button onClick={leaveRoom}>退出</button>
             </main>
             <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
               <Gemini />
+            </div>
+            <div className={`chat`}>
+            <div id='inpuelemBottom' className='inputElements'>
+            <TextField 
+              type="text"
+              fullWidth  
+              label="メッセージ" 
+              variant="filled" 
+              color="primary"
+              value={message} onChange={(e) => setMessage(e.target.value)}/>
+              <button onClick={ sendMessage }>送信</button>
+          </div>
+
             </div>
           </div>
         )}

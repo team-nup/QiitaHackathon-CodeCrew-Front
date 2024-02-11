@@ -118,3 +118,18 @@
     opacity: 1;
   }
 }
+
+
+.chat {
+  position: fixed;
+  top: 75%;
+  width: 20%;
+  height: 5%;
+  background-color: white;
+  padding: 20px;
+  margin-left: 3%;
+  border: 2px solid black;
+  border-radius: 10px;
+  transition: right 0.5s ease; /* アニメーションを設定 */
+  z-index: 3;
+}
