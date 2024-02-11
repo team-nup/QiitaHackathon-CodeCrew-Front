@@ -42,12 +42,12 @@ export default function Gemini() {
         </div>
             <div className='inputTextContainer'>
                 <TextField 
-                fullWidth  
-                label="input message" 
-                variant="filled" 
-                color="primary"
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onChange={(e:any) => setInputText(e.target.value)}/>
+                    fullWidth  
+                    label="input message" 
+                    variant="filled" 
+                    color="primary"
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    onChange={(e:any) => setInputText(e.target.value)}/>
                 <div className='isClicledChatBtn'>
                 <IconButton 
                     color="primary" 
