@@ -30,7 +30,7 @@ export default function RoomPageHeader() {
                 size="large"
                 endIcon={<AutoGraphIcon />}
                 onClick={() => { navigate('/ranking')}}>
-                ランキング
+                ほげほげ
             </Button>
         </div>
     </header>

@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import Home from './components/home/Home'
 import SignIn from './components/signin/signin'
-import Login from './components/login/Login'
 import SignUp from './components/signup/siginup'
 import Room from './components/room/room'
 import SelectRoom from './components/selectRoom/selectRoom'
@@ -18,7 +17,6 @@ export default function App ()  {
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/signin' element={<SignIn/>} />
-      <Route path='/login' element={<Login/>} />
       <Route path='/signup' element={<SignUp/>} />
       <Route path='/room' element={<Room/>} />
       <Route path='/selectRoom' element={<SelectRoom/>} />
