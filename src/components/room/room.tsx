@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import SmartToyTwoToneIcon from '@mui/icons-material/SmartToyTwoTone';
 import RoomPageHeader from '../header/roomPageHeader';
 import Gemini from '../room/gemini';
+import SendIcon from '@mui/icons-material/Send';
 
 import './room.css'
 import './gemini.css'
@@ -133,23 +134,34 @@ export default function Room() {
                     </div>
                 </div>
               </div>
+              {/* ↓修正して、ヘッダーの退出に */}
               <button onClick={leaveRoom}>退出</button>
             </main>
             <div className={`popupContainer ${popupActive ? 'active' : ''}`}>
               <Gemini />
             </div>
             <div className={`chat`}>
-            <div id='inpuelemBottom' className='inputElements'>
-            <TextField 
-              type="text"
-              fullWidth  
-              label="メッセージ" 
-              variant="filled" 
-              color="primary"
-              value={message} onChange={(e) => setMessage(e.target.value)}/>
-              <button onClick={ sendMessage }>送信</button>
-          </div>
-
+              <div className='chatContainer'>
+                <div id='inpuelemBottom' className='inputElements'>
+                <TextField 
+                  type="text"
+                  fullWidth 
+                  label="メッセージを入力" 
+                  variant="filled" 
+                  color="primary"
+                  onClick={ sendMessage }
+                  value={message} onChange={(e) => setMessage(e.target.value)}/>
+                </div>
+                <div className='isClicledChatBtn'>
+                    <IconButton 
+                        color="primary" 
+                        aria-label="add to shopping cart" 
+                        size="large"
+                        onClick={() =>{}}>
+                        <SendIcon fontSize="inherit" className='text-white'/>
+                    </IconButton>
+                </div>
+              </div>
             </div>
           </div>
         )}
